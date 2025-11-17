@@ -11,7 +11,9 @@ st.set_page_config(page_title="Análisis de Confesiones", layout="wide", page_ic
 
 @st.cache_data
 def load_data():
-    df = pd.read_csv('df_final_nlp5.csv')
+    df1 = pd.read_csv('df_final_nlp5_1.csv')
+    df2 = pd.read_csv('df_final_nlp5_2.csv')
+    df = pd.concat([df1, df2], ignore_index=True)
     df_comentarios = pd.read_csv('comentarios_sentimientos.csv')
     return df, df_comentarios
 

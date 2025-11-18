@@ -13,7 +13,7 @@ st.set_page_config(page_title="Análisis de Confesiones", layout="wide", page_ic
 @st.cache_data
 def load_data():
     # Leer y unir todos los CSV de la carpeta splits_nlp5
-    csv_files = glob.glob("splits_nlp5/df_final_nlp5_part*.csv")
+    csv_files = glob.glob("df_final_nlp5_part*.csv")
     df_list = [pd.read_csv(f) for f in csv_files]
     df = pd.concat(df_list, ignore_index=True)
     df_comentarios = pd.read_excel('comentarios_sentimientos.xlsx')
@@ -397,4 +397,5 @@ else:
 
     st.markdown("---")
     st.caption("Análisis de Confesiones con NLP | Desarrollado con Streamlit")
+
 

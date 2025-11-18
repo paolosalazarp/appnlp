@@ -6,15 +6,17 @@ import ast
 import plotly.express as px
 import plotly.graph_objects as go
 from collections import Counter
+import glob
 
 st.set_page_config(page_title="Análisis de Confesiones", layout="wide", page_icon="💬")
 
 @st.cache_data
 def load_data():
-    df1 = pd.read_csv('df_final_nlp5_1.csv')
-    df2 = pd.read_csv('df_final_nlp5_2.csv')
-    df = pd.concat([df1, df2], ignore_index=True)
-    df_comentarios = pd.read_csv('comentarios_sentimientos.csv')
+    # Leer y unir todos los CSV de la carpeta splits_nlp5
+    csv_files = glob.glob('../splits_nlp5/df_final_nlp5_part*.csv')
+    df_list = [pd.read_csv(f) for f in csv_files]
+    df = pd.concat(df_list, ignore_index=True)
+    df_comentarios = pd.read_excel('comentarios_sentimientos.xlsx')
     return df, df_comentarios
 
 df, df_comentarios = load_data()

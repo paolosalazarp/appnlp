@@ -116,7 +116,7 @@ if page == "📊 Estadísticas":
         ).sort_values('num_confesiones', ascending=False).head(20)
         
         fig_confes = px.bar(confesiones_por_usuario, x='usuario', y='num_confesiones',
-                     title='Top 20 Usuarios con más Confesiones',
+                     title='Top 20 Usuarios con más Comentarios',
                      labels={'usuario': 'Usuario', 'num_confesiones': 'Número de Comentarios'},
                      color='num_confesiones')
         fig_confes.update_xaxes(tickangle=-45)
@@ -414,6 +414,7 @@ else:
 
     st.markdown("---")
     st.caption("Análisis de Confesiones con NLP | Desarrollado con Streamlit")
+
 
 
 
